@@ -17,7 +17,7 @@ public class experimentalLinSLide extends LinearOpMode {
 
         while (opModeIsActive()) {
             linSlideMotor = hardwareMap.dcMotor.get("linSlideMotor");
-            AndrewLinSlide.setLSMotor(linSlideMotor);
+            linSlide.setLSMotor(linSlideMotor);
         }
 
     }
