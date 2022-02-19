@@ -3,16 +3,16 @@ package org.firstinspires.ftc.teamcode.Tele.tested;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
-import com.qualcomm.robotcore.hardware.ServoController;
 
 import org.firstinspires.ftc.teamcode.Tele.untested.Carousel;
 import org.firstinspires.ftc.teamcode.Tele.untested.drivechain;
 import org.firstinspires.ftc.teamcode.Tele.untested.dump;
 import org.firstinspires.ftc.teamcode.Tele.untested.intake;
-import org.firstinspires.ftc.teamcode.Tele.untested.linSlide;
+import org.firstinspires.ftc.teamcode.Tele.untested.AndrewLinSlide;
 
-public class initialize extends LinearOpMode {
+public class initialize {
 
     DcMotor motorFrontLeft= null;
     DcMotor motorFrontRight = null;
@@ -24,7 +24,7 @@ public class initialize extends LinearOpMode {
     CRServo intakeServo = null;
 
 
-    public void setHardware(){
+    public initialize(HardwareMap hardwareMap){
         motorFrontLeft = hardwareMap.dcMotor.get("motorFrontLeft");
         motorFrontRight = hardwareMap.dcMotor.get("motorFrontRight");
         motorBackLeft = hardwareMap.dcMotor.get("motorBackLeft");
@@ -38,14 +38,11 @@ public class initialize extends LinearOpMode {
 
     public void initFunctions(){
         drivechain.setDTMotors(motorFrontLeft,motorFrontRight,motorBackLeft,motorBackRight);
-        linSlide.setLSMotor(LinSlideMotor);
+        AndrewLinSlide.setLSMotor(LinSlideMotor);
         Carousel.setCSMotor(carouMotor);
         dump.setDumpServo(dumpServo);
         intake.setIntakeServo(intakeServo);
     }
 
-    @Override
-    public void runOpMode() throws InterruptedException {
 
-    }
 }
