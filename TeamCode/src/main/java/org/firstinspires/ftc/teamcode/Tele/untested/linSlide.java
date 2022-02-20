@@ -10,8 +10,6 @@ public class linSlide {
     public enum states{LOW, HIGH} //states the slide can be in
     static states state = states.LOW;
 
-    //DcMotor LinSlideMotor = null; //declares motor
-
     public static void setLSMotor(float LTrigger, float RTrigger, DcMotor LSMotor){
 
         moveLS(LTrigger, RTrigger, LSMotor);
