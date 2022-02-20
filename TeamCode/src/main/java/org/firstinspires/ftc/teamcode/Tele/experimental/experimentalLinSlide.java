@@ -25,11 +25,8 @@ public class experimentalLinSlide extends LinearOpMode {
 
         while (opModeIsActive()) {
 
-            while (opModeIsActive()) {
+            linSlide.setLSMotor(gamepad1.left_trigger, gamepad1.right_trigger, LinSlideMotor);
 
-                linSlide.setLSMotor(gamepad1.left_trigger, gamepad1.right_trigger, LinSlideMotor);
-
-            }
         }
 
     }
