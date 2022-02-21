@@ -16,9 +16,9 @@ public class linSlide {
         receiveCurrentState(receivedState);
         moveLS(LTrigger, RTrigger, LSMotor);
 
-        if(LSMotor.getCurrentPosition() == low){
+     /*   if(LSMotor.getCurrentPosition() == low){
             LSMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        }
+        } */
     }
 
     public static void moveLS(float LTrig, float RTrig, DcMotor LSM){ //moves the lin slide by setting the motor power
