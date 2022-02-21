@@ -12,7 +12,7 @@ public class AndrewLinSlide {
     static final int high = 2100;
 
     public enum states{LOW, HIGH, TOLOW,TOHIGH,WAIT4DUMP} //states the slide can be in
-    static states state = states.LOW;
+    public static states state = states.LOW;
 
     static DcMotor LinSlideMotor = null; //declares motor
 

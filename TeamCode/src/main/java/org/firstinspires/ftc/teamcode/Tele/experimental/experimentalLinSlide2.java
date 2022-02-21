@@ -20,6 +20,9 @@ public class experimentalLinSlide2 extends LinearOpMode {
         while(opModeIsActive()){
             AndrewLinSlide.controllerInput(gamepad1);
 
+            telemetry.addData("linslide State: ",AndrewLinSlide.state.toString());
+            telemetry.update();
+
         }
 
     }
