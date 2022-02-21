@@ -19,7 +19,7 @@ public class dump {
         dumpServo = DS;
         dumpServo.setPosition(startPos);
         sCont = dumpServo.getController();
-        sCont.pwmEnable();
+        sCont.pwmEnable();//enables PWM. It's supposed to be on by default, but I'm just gonna turn it on again just in case.
         runTime = new ElapsedTime();
     }
 
