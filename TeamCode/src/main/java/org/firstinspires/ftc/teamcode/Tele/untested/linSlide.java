@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 public class linSlide {
 
     static final int low = 0; //encoder values
-    static final int high = 2100;
+    static final int high = 100;
 
     public enum states{LOW, HIGH, GOUP, GODOWN} //states the slide can be in
     static states state;
