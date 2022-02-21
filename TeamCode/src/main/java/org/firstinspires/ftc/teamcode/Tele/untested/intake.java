@@ -8,6 +8,8 @@ public class intake {
     static CRServo intakeServo;
     static ServoController sCont= null;
 
+    //kinda like the dump servo code, but can be controlled with gamepad
+
     public static void setIntakeServo(CRServo INTK){
         intakeServo = INTK;
         sCont = intakeServo.getController();
