@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 public class linSlide {
 
     static final int low = 0; //encoder values
-    static final int high = 100;
+    static final int high = 2100;
 
     public enum states{LOW, HIGH, GOUP, GODOWN} //states the slide can be in
     static states state;
@@ -20,29 +20,30 @@ public class linSlide {
 
     public static void moveLS(float LTrig, float RTrig, DcMotor LSM){ //moves the lin slide by setting the motor power
 
+        int currentEncoderValue = LSM.getCurrentPosition();
         switch (state){
             case LOW:
-                if(LTrig == 1 && LSM.getCurrentPosition() <= high){
+                if(LTrig == 1 && currentEncoderValue <= high){
                     state = states.GOUP;
                 }
                 LSM.setPower(0);
-                System.out.println(LSM.getCurrentPosition());
+                System.out.println(currentEncoderValue);
                 break;
 
             case HIGH:
-                if(RTrig == 1 && LSM.getCurrentPosition() >= low){
+                if(RTrig == 1 && currentEncoderValue >= low){
                     state = states.GODOWN;
                 }
                 LSM.setPower(0.1);
-                System.out.println(LSM.getCurrentPosition());
+                System.out.println(currentEncoderValue);
                 break;
 
             case GOUP:
                 LSM.setTargetPosition(high);
                 LSM.setPower(0.9);
-                LSM.getCurrentPosition();
+                currentEncoderValue = LSM.getCurrentPosition();
 
-                if (LSM.getCurrentPosition() >= high) {
+                if (currentEncoderValue >= high) {
                     state = states.HIGH;
                 }
 
@@ -50,15 +51,15 @@ public class linSlide {
                     state = states.GODOWN;
                 }
 
-                System.out.println(LSM.getCurrentPosition());
+                System.out.println(currentEncoderValue);
                 break;
 
             case GODOWN:
                 LSM.setTargetPosition(low);
                 LSM.setPower(0.9);
-                LSM.getCurrentPosition();
+                currentEncoderValue = LSM.getCurrentPosition();
 
-                if (LSM.getCurrentPosition() <= low) {
+                if (currentEncoderValue <= low) {
                     state = states.LOW;
                 }
 
@@ -66,7 +67,7 @@ public class linSlide {
                     state = states.GOUP;
                 }
 
-                System.out.println(LSM.getCurrentPosition());
+                System.out.println(currentEncoderValue);
                 break;
 
             default:
