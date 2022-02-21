@@ -35,7 +35,7 @@ public class linSlide {
                 if(RTrig == 1 && LSM.getCurrentPosition() != low){
                     state = states.LOW;
                 }
-                LSM.setPower(0.1);
+                LSM.setPower(0.0);              /** at top code **/
                 break;
 
             case GOUP:
