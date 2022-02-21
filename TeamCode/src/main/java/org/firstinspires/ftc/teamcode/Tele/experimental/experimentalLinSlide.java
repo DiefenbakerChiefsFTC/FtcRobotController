@@ -27,7 +27,6 @@ public class experimentalLinSlide extends LinearOpMode {
 
             linSlide.mainLSMethod(STATE, gamepad1.left_trigger, gamepad1.right_trigger, LinSlideMotor);
             sendCurrentState();
-
         }
 
     }
