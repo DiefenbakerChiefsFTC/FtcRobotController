@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 public class linSlide {
 
     static final int low = 0; //encoder values
-    static final int high = 2100;
+    static final int high = 0;
 
     public enum states{LOW, HIGH, GOUP, GODOWN} //states the slide can be in
     static states state;
@@ -16,9 +16,6 @@ public class linSlide {
         receiveCurrentState(receivedState);
         moveLS(LTrigger, RTrigger, LSMotor);
 
-     /*   if(LSMotor.getCurrentPosition() == low){
-            LSMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        } */
     }
 
     public static void moveLS(float LTrig, float RTrig, DcMotor LSM){ //moves the lin slide by setting the motor power
@@ -35,7 +32,7 @@ public class linSlide {
                 if(RTrig == 1 && LSM.getCurrentPosition() != low){
                     state = states.GODOWN;
                 }
-                LSM.setPower(0.0);              /** at top code **/
+                LSM.setPower(0.1);
                 break;
 
             case GOUP:
