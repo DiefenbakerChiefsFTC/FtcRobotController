@@ -26,6 +26,7 @@ public class linSlide {
                     state = states.GOUP;
                 }
                 LSM.setPower(0);
+                System.out.println(LSM.getCurrentPosition());
                 break;
 
             case HIGH:
@@ -33,6 +34,7 @@ public class linSlide {
                     state = states.GODOWN;
                 }
                 LSM.setPower(0.1);
+                System.out.println(LSM.getCurrentPosition());
                 break;
 
             case GOUP:
@@ -48,6 +50,7 @@ public class linSlide {
                     state = states.GODOWN;
                 }
 
+                System.out.println(LSM.getCurrentPosition());
                 break;
 
             case GODOWN:
@@ -63,6 +66,7 @@ public class linSlide {
                     state = states.GOUP;
                 }
 
+                System.out.println(LSM.getCurrentPosition());
                 break;
 
             default:
