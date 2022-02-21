@@ -19,6 +19,7 @@ public class AndrewLinSlide {
     public static void setLSMotor(DcMotor LSMotor){
         LinSlideMotor = LSMotor;
         LinSlideMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        LinSlideMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         if(LSMotor.getCurrentPosition() == low){
             LSMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         }
