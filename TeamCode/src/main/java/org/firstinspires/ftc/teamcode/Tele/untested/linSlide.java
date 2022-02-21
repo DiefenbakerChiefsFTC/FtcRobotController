@@ -4,6 +4,41 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 
 public class linSlide {
 
+
+    public static void mainLSMethod(String receivedState, DcMotor LSM){//processes the info received from the opmode
+
+        switch (receivedState){
+            case "low":
+                LSM.setPower(0);
+                break;
+
+            case "high":
+                LSM.setPower(0.1);
+                break;
+
+            case "goingUp":
+                LSM.setPower(0.9);
+                break;
+
+            case "goingDown":
+                LSM.setPower(-0.9);
+                break;
+
+            default:
+                break;
+        }
+
+
+    }
+
+
+}
+/* package org.firstinspires.ftc.teamcode.Tele.untested;
+
+import com.qualcomm.robotcore.hardware.DcMotor;
+
+public class linSlide {
+
     static final int low = 0; //encoder values
     static final int high = 2100;
 
@@ -96,4 +131,4 @@ public class linSlide {
     }
 
 }
-//end
+*/
