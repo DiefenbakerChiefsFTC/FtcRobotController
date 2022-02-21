@@ -25,6 +25,7 @@ public class experimentalLinSlide extends LinearOpMode {
 
         while (opModeIsActive()) {
 
+            System.out.println(LinSlideMotor.getCurrentPosition());
             linSlide.mainLSMethod(STATE, gamepad1.left_trigger, gamepad1.right_trigger, LinSlideMotor);
             sendCurrentState();
         }
