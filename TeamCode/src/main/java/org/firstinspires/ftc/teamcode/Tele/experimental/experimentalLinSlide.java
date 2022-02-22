@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.Tele.experimental;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Gamepad;
 
 import org.firstinspires.ftc.teamcode.Tele.untested.linSlide;
 
@@ -11,10 +12,6 @@ import org.firstinspires.ftc.teamcode.Tele.untested.linSlide;
 public class experimentalLinSlide extends LinearOpMode {
 
     public DcMotor LinSlideMotor;
-    String STATE = "low";
-
-    static final int low = 0; //encoder values
-    static final int high = 2100;
 
     public void runOpMode() throws InterruptedException {
 
@@ -28,29 +25,12 @@ public class experimentalLinSlide extends LinearOpMode {
 
         while (opModeIsActive()) {
 
-            linSlide.mainLSMethod(STATE, LinSlideMotor);
-            stateCheck();
+            linSlide.mainLSMethod(gamepad1, LinSlideMotor);
 
         }
 
-    }
-    public void stateCheck(){
-        switch (STATE){
-            case "low":
-                if(gamepad1.left_trigger==1) STATE = "goingUp";
-                break;
-            case "high":
-                if(gamepad1.right_trigger==1) STATE = "goingDown";
-                break;
-            case "goingUp":
-                if(LinSlideMotor.getCurrentPosition()>=high) STATE = "high";
-                if(gamepad1.right_trigger==1) STATE = "goingDown";
-                break;
-            case "goingDown":
-                if(LinSlideMotor.getCurrentPosition()<=low) STATE = "low";
-                if(gamepad1.left_trigger==1) STATE = "goingUp";
-                break;
-        }
     }
 
 }
+
+
