@@ -1,26 +1,49 @@
 package org.firstinspires.ftc.teamcode.Tele.untested;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Gamepad;
 
 public class linSlide {
 
+    static final int low = 0; //encoder values
+    static final int high = 2100;
 
-    public static void mainLSMethod(String receivedState, DcMotor LSM){//processes the info received from the opmode
+    public enum states{LOW, HIGH, GOUP, GODOWN}
+    static states state = states.LOW;
 
-        switch (receivedState){
-            case "low":
+    public static void mainLSMethod(Gamepad GMP, DcMotor LSM){//processes the info received from the opmode
+
+        boolean LTrig = GMP.left_trigger == 1;
+        boolean RTrig = GMP.right_trigger == 1;
+
+        switch (state){
+            case LOW:
+                if(LTrig && LSM.getCurrentPosition() < high) state = states.GOUP;
+                System.out.println(LSM.getCurrentPosition());
+
                 LSM.setPower(0);
                 break;
 
-            case "high":
+            case HIGH:
+                if(RTrig && LSM.getCurrentPosition() > low) state = states.GODOWN;
+                System.out.println(LSM.getCurrentPosition());
+
                 LSM.setPower(0.1);
                 break;
 
-            case "goingUp":
+            case GOUP:
+                if(LSM.getCurrentPosition() > high) state = states.HIGH;
+                if(RTrig) state = states.GODOWN;
+                System.out.println(LSM.getCurrentPosition());
+
                 LSM.setPower(0.9);
                 break;
 
-            case "goingDown":
+            case GODOWN:
+                if(LSM.getCurrentPosition() <= low) state = states.LOW;
+                if(LTrig) state = states.GOUP;
+                System.out.println(LSM.getCurrentPosition());
+
                 LSM.setPower(-0.9);
                 break;
 
