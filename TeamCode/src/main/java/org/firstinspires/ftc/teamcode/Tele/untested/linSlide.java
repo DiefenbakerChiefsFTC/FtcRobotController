@@ -5,8 +5,6 @@ import com.qualcomm.robotcore.hardware.Gamepad;
 
 public class linSlide {
 
-    static final int low = 0; //encoder values
-    static final int high = 2100;
     static final double totalTimeFromTopToBottom = 1000;
 
     static double lastStateChangeTime;
