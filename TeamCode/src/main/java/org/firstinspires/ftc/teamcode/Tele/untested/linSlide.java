@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.hardware.Gamepad;
 
 public class linSlide {
 
-    static final double totalTimeFromTopToBottom = 1000;
+    static final double totalTimeFromTopToBottom = 500;
 
     static double lastStateChangeTime;
     static double timeMoving;
