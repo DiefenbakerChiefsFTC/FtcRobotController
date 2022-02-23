@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.Tele.untested;
+package org.firstinspires.ftc.teamcode.Tele.untested.LinearSlide;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Gamepad;
