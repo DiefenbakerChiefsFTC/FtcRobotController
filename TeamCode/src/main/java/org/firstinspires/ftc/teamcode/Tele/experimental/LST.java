@@ -11,7 +11,7 @@ import org.firstinspires.ftc.teamcode.Tele.untested.linSlide;
 public class LST extends LinearOpMode {
 
     public DcMotor LinSlideMotor;
-
+    double CurrentPosition;
     public void runOpMode() throws InterruptedException {
 
         LinSlideMotor = hardwareMap.dcMotor.get("LinSlideMotor");
@@ -25,7 +25,8 @@ public class LST extends LinearOpMode {
         while (opModeIsActive()) {
 
             LinSlideMotor.setPower(0.1);
-            System.out.println(LinSlideMotor.getCurrentPosition());
+            CurrentPosition = LinSlideMotor.getCurrentPosition();
+            System.out.println(CurrentPosition);
 
         }
 
