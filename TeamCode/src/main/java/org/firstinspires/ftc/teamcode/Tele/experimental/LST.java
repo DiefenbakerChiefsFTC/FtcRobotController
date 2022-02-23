@@ -21,6 +21,7 @@ public class LST extends LinearOpMode {
 
         while (opModeIsActive()) {
             LinSlideMotor.setTargetPosition(1000);
+            LinSlideMotor.setPower(.5);
             LinSlideMotor.setMode(RunMode.RUN_TO_POSITION);
             //CurrentPos = LinSlideMotor.getCurrentPosition(); //uncomment this line and comment line 18 if reading returns 0
             telemetry.addData("Encoder Value", LinSlideMotor.getCurrentPosition());
