@@ -73,6 +73,7 @@ public class linSlide {
     public static void mainLSMethod(Gamepad GMP, DcMotor LSM){//processes the info received from the opmode
 
         boolean LTrig = GMP.left_trigger == 1;
+
         boolean RTrig = GMP.right_trigger == 1;
 
         switch (state){
