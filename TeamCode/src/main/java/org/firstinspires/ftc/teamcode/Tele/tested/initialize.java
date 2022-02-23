@@ -30,8 +30,6 @@ public class initialize extends LinearOpMode {
         motorBackRight = hardwareMap.dcMotor.get("motorBackRight");
         carouMotor = hardwareMap.dcMotor.get("carouMotor");           //carousel
         LinSlideMotor = hardwareMap.dcMotor.get("LinSlideMotor");     //linear slide
-        LinSlideMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        LinSlideMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         dumpServo = hardwareMap.servo.get("dumpServo");               //dump servo
         intakeServo = hardwareMap.crservo.get("intakeServo");         //intake servo
 
