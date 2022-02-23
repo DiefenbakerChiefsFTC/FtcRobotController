@@ -24,14 +24,12 @@ public class LST extends LinearOpMode {
 
         while (opModeIsActive()) {
 
-            LinSlideMotor.setPower(0.1);
+            LinSlideMotor.setTargetPosition(100);
             CurrentPosition = LinSlideMotor.getCurrentPosition();
             System.out.println(CurrentPosition);
 
         }
-
     }
-
 }
 
 
