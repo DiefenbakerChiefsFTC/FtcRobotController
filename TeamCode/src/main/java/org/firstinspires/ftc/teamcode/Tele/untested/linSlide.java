@@ -3,24 +3,20 @@ package org.firstinspires.ftc.teamcode.Tele.untested;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Gamepad;
 
+
 public class linSlide {
 
     static final double totalTimeFromTopToBottom = 500; //total time for motor to run from top to bottom
 
     static double lastStateChangeTime; //last time state was changed
-    static double timeMoving; //time that the motor was moving, used to switch direction midway
 
     public enum states{LOW, HIGH, GOUP, GODOWN}
     static states state = states.LOW; //start at low state
 
-    public static void mainLSMethod(Gamepad GMP, double elapsedTime, DcMotor LSM){//processes the info received from the opmode
-
-        boolean LTrig = GMP.left_trigger == 1;
-        boolean RTrig = GMP.right_trigger == 1;
+    public static void mainLSMethod(boolean LTrig, double elapsedTime, DcMotor LSM){//processes the info received from the opmode
 
         switch (state){
             case LOW:
-                timeMoving = totalTimeFromTopToBottom; //set to max if not moving
                 if(LTrig) {
                     state = states.GOUP;
                     lastStateChangeTime = elapsedTime;
@@ -29,8 +25,7 @@ public class linSlide {
                 break;
 
             case HIGH:
-                timeMoving = totalTimeFromTopToBottom; //set to max if not moving
-                if(RTrig) {
+                if(LTrig) {
                     state = states.GODOWN;
                     lastStateChangeTime = elapsedTime;
                 }
@@ -38,24 +33,14 @@ public class linSlide {
                 break;
 
             case GOUP:
-                if(RTrig){
-                    state = states.GODOWN; //direction change
-                    timeMoving = elapsedTime - lastStateChangeTime; //how long its been going up
-                    lastStateChangeTime = elapsedTime;
-                }
-                else if (elapsedTime - lastStateChangeTime > totalTimeFromTopToBottom || elapsedTime - lastStateChangeTime > timeMoving){ //gets to top
+                if (elapsedTime - lastStateChangeTime > totalTimeFromTopToBottom){ //gets to top
                     state = states.HIGH;
                 }
                 LSM.setPower(0.9);
                 break;
 
             case GODOWN:
-                if(LTrig){
-                    state = states.GOUP; //direction change
-                    timeMoving = elapsedTime - lastStateChangeTime; //how long its been going down
-                    lastStateChangeTime = elapsedTime;
-                }
-                else if (elapsedTime - lastStateChangeTime > totalTimeFromTopToBottom || elapsedTime - lastStateChangeTime > timeMoving){ //gets to bottom
+              if (elapsedTime - lastStateChangeTime > totalTimeFromTopToBottom){ //gets to bottom
                     state = states.LOW;
                 }
                 LSM.setPower(-0.9);

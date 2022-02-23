@@ -21,7 +21,7 @@ public class experimentalLinSlide extends LinearOpMode {
 
         while (opModeIsActive()) {
 
-            linSlide.mainLSMethod(gamepad1, System.currentTimeMillis(), LinSlideMotor);
+            linSlide.mainLSMethod(gamepad1.left_trigger>0.9, System.currentTimeMillis(), LinSlideMotor);
 
         }
 

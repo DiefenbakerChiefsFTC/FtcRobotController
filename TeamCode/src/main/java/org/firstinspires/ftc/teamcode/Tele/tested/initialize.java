@@ -37,7 +37,7 @@ public class initialize extends LinearOpMode {
 
     public void initFunctions(){
         drivechain.setDTMotors(motorFrontLeft,motorFrontRight,motorBackLeft,motorBackRight);
-        linSlide.mainLSMethod(gamepad1, 0, LinSlideMotor);
+        linSlide.mainLSMethod(gamepad1.left_trigger>0.9, 0, LinSlideMotor);
         Carousel.setCSMotor(carouMotor);
         dump.setDumpServo(dumpServo);
         intake.setIntakeServo(intakeServo);
