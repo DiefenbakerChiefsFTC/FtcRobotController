@@ -9,7 +9,7 @@ import org.firstinspires.ftc.teamcode.Tele.untested.Carousel;
 import org.firstinspires.ftc.teamcode.Tele.untested.drivechain;
 import org.firstinspires.ftc.teamcode.Tele.untested.dump;
 import org.firstinspires.ftc.teamcode.Tele.untested.intake;
-import org.firstinspires.ftc.teamcode.Tele.untested.linSlide;
+import org.firstinspires.ftc.teamcode.Tele.untested.LinearSlide.linSlide;
 
 public class initialize extends LinearOpMode {
 
