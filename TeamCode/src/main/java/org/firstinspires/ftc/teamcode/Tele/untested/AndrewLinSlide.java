@@ -14,15 +14,14 @@ public class AndrewLinSlide {
 
     public enum states{LOW, HIGH, TOLOW,TOHIGH,WAIT4DUMP} //states the slide can be in
     public static states state = states.LOW;
-    public static double desirePower = 0;
 
-    public static DcMotorEx LinSlideMotor = null; //declares motor
+    public static DcMotorEx LinSlideMotor; //declares motor
 
     public static void setLSMotor(DcMotorEx LSMotor){
         LinSlideMotor = LSMotor;
         LinSlideMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        //LinSlideMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         LinSlideMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        LinSlideMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
 
     public static void controllerInput(Gamepad gamepad1){
@@ -70,7 +69,7 @@ public class AndrewLinSlide {
 
             case TOLOW:
                 if(LinSlideMotor.getCurrentPosition()>low){
-                    //LinSlideMotor.setPower(0.5);
+                    //LinSlideMotor.setPower(-0.5);
                     LinSlideMotor.setVelocity(-600);
                 } else{
                     System.out.println(LinSlideMotor.getPower());
