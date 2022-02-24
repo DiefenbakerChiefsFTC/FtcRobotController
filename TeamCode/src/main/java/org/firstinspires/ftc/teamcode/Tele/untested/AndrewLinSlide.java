@@ -14,6 +14,7 @@ public class AndrewLinSlide {
 
     public enum states{LOW, HIGH, TOLOW,TOHIGH,WAIT4DUMP} //states the slide can be in
     public static states state = states.LOW;
+    public static double desirePower = 0;
 
     public static DcMotorEx LinSlideMotor = null; //declares motor
 
@@ -40,8 +41,10 @@ public class AndrewLinSlide {
 
             case TOHIGH:
                 if(LinSlideMotor.getCurrentPosition()<high){
+                    //LinSlideMotor.setPower(0.5);
                     LinSlideMotor.setVelocity(600);
                 }else{
+                    System.out.println(LinSlideMotor.getPower());
                     LinSlideMotor.setPower(0);
                     System.out.println(LinSlideMotor.getPower());
                     state=states.HIGH;
@@ -49,6 +52,7 @@ public class AndrewLinSlide {
                 return;
 
             case HIGH:
+                System.out.println(LinSlideMotor.getPower());
                 LinSlideMotor.setPower(0);
                 if(nextState) {
                     dump.dumpFreight();
@@ -66,18 +70,19 @@ public class AndrewLinSlide {
 
             case TOLOW:
                 if(LinSlideMotor.getCurrentPosition()>low){
+                    //LinSlideMotor.setPower(0.5);
                     LinSlideMotor.setVelocity(-600);
                 } else{
+                    System.out.println(LinSlideMotor.getPower());
                     LinSlideMotor.setPower(0);
                     state=states.LOW;
                 }
                 dump.recover();
                 return;
 
-            default:
-                return;
         }
     }
+
 
 }
 //end

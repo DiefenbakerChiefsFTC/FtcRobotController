@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.Tele.experimental;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
 
 import org.firstinspires.ftc.teamcode.Tele.tested.initialize;
 import org.firstinspires.ftc.teamcode.Tele.untested.AndrewLinSlide;
@@ -28,7 +29,7 @@ public class experimentalLinSlide2 extends LinearOpMode {
 
             telemetry.addData("linslide State: ",AndrewLinSlide.state.toString());
             telemetry.addData("linslide encoder: ",AndrewLinSlide.LinSlideMotor.getCurrentPosition());
-            telemetry.addData("linslide power: ",AndrewLinSlide.LinSlideMotor.getPower());
+            telemetry.addData("linslide power: ",initializer.LinSlideMotor.getPower());
             telemetry.update();
 
         }

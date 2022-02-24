@@ -15,12 +15,12 @@ import org.firstinspires.ftc.teamcode.Tele.untested.AndrewLinSlide;
 
 public class initialize {
 
-    DcMotor motorFrontLeft= null;
-    DcMotor motorFrontRight = null;
-    DcMotor motorBackLeft = null;
-    DcMotor motorBackRight = null;
-    DcMotor carouMotor = null;
-    DcMotorEx LinSlideMotor = null;
+    private DcMotor motorFrontLeft= null;
+    private DcMotor motorFrontRight = null;
+    private DcMotor motorBackLeft = null;
+    private DcMotor motorBackRight = null;
+    private DcMotor carouMotor = null;
+    public DcMotorEx LinSlideMotor = null;
     Servo dumpServo = null;
     CRServo intakeServo = null;
     HardwareMap hardwareMap= null;
