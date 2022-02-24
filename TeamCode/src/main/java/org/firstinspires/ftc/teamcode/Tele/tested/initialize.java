@@ -22,23 +22,39 @@ public class initialize {
     DcMotor LinSlideMotor = null;
     Servo dumpServo = null;
     CRServo intakeServo = null;
+    HardwareMap hardwareMap= null;
 
 
-    public initialize(HardwareMap hardwareMap){
+    public initialize(HardwareMap HRDWRMAP){
+        hardwareMap = HRDWRMAP;
+    }
+    public void initDT(){
         motorFrontLeft = hardwareMap.dcMotor.get("motorFrontLeft");
         motorFrontRight = hardwareMap.dcMotor.get("motorFrontRight");
         motorBackLeft = hardwareMap.dcMotor.get("motorBackLeft");
         motorBackRight = hardwareMap.dcMotor.get("motorBackRight");
-        carouMotor = hardwareMap.dcMotor.get("carouMotor");
-        LinSlideMotor = hardwareMap.dcMotor.get("LinSlideMotor");
-        dumpServo = hardwareMap.servo.get("dumpServo");
-        intakeServo = hardwareMap.crservo.get("intakeServo");
-
+        drivechain.setDTMotors(motorFrontLeft,motorFrontRight,motorBackLeft,motorBackRight);
     }
+    public void initLS(){
+        LinSlideMotor = hardwareMap.dcMotor.get("LinSlideMotor");
+        AndrewLinSlide.setLSMotor(LinSlideMotor);
+    }
+    public void initCarou(){
+        carouMotor = hardwareMap.dcMotor.get("carouMotor");
+        Carousel.setCSMotor(carouMotor);
+    }
+    public void initIntake(){
+        intakeServo = hardwareMap.crservo.get("intakeServo");
+        intake.setIntakeServo(intakeServo);
+    }
+    public void initDump(){
+        dumpServo = hardwareMap.servo.get("dumpServo");
+        dump.setDumpServo(dumpServo);
+    }
+
 
     public void initFunctions(){
         drivechain.setDTMotors(motorFrontLeft,motorFrontRight,motorBackLeft,motorBackRight);
-        AndrewLinSlide.setLSMotor(LinSlideMotor);
         Carousel.setCSMotor(carouMotor);
         dump.setDumpServo(dumpServo);
         intake.setIntakeServo(intakeServo);

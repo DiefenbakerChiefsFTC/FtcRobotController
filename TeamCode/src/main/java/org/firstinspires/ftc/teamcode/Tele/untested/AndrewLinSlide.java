@@ -14,13 +14,13 @@ public class AndrewLinSlide {
     public enum states{LOW, HIGH, TOLOW,TOHIGH,WAIT4DUMP} //states the slide can be in
     public static states state = states.LOW;
 
-    static DcMotor LinSlideMotor = null; //declares motor
+    public static DcMotor LinSlideMotor = null; //declares motor
 
     public static void setLSMotor(DcMotor LSMotor){
         LinSlideMotor = LSMotor;
         LinSlideMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         LinSlideMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        LSMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        LinSlideMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
     }
 
     public static void controllerInput(Gamepad gamepad1){

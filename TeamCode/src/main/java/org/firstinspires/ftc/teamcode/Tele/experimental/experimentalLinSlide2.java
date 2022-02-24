@@ -21,6 +21,8 @@ public class experimentalLinSlide2 extends LinearOpMode {
             AndrewLinSlide.controllerInput(gamepad1);
 
             telemetry.addData("linslide State: ",AndrewLinSlide.state.toString());
+            telemetry.addData("linslide encoder: ",AndrewLinSlide.LinSlideMotor.getCurrentPosition());
+            telemetry.addData("linslide power: ",AndrewLinSlide.LinSlideMotor.getPower());
             telemetry.update();
 
         }
