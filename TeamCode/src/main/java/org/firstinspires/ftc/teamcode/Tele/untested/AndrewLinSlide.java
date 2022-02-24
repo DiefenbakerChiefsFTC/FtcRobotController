@@ -36,17 +36,17 @@ public class AndrewLinSlide {
                 if(nextState && LinSlideMotor.getCurrentPosition() < high){
                     state = states.TOHIGH;
                 }
-                break;
+                return;
 
             case TOHIGH:
                 if(LinSlideMotor.getCurrentPosition()<high){
-                    LinSlideMotor.setPower(0.9);
+                    LinSlideMotor.setPower(0.4);
                 }else{
                     LinSlideMotor.setPower(0);
                     System.out.println(LinSlideMotor.getPower());
                     state=states.HIGH;
                 }
-                break;
+                return;
 
             case HIGH:
                 LinSlideMotor.setPower(0);
@@ -54,14 +54,14 @@ public class AndrewLinSlide {
                     dump.dumpFreight();
                     state = states.WAIT4DUMP;
                 }
-                break;
+                return;
 
             case WAIT4DUMP:
                 dump.update();
                 if(!dump.dumping){
                     state=states.TOLOW;
                 }
-                break;
+                return;
 
 
             case TOLOW:
@@ -72,10 +72,10 @@ public class AndrewLinSlide {
                     LinSlideMotor.setPower(0);
                     state=states.LOW;
                 }
-                break;
+                return;
 
             default:
-                break;
+                return;
         }
     }
 
