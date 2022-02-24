@@ -40,7 +40,7 @@ public class AndrewLinSlide {
 
             case TOHIGH:
                 if(LinSlideMotor.getCurrentPosition()<high){
-                    LinSlideMotor.setPower(0.4);
+                    LinSlideMotor.setVelocity(600);
                 }else{
                     LinSlideMotor.setPower(0);
                     System.out.println(LinSlideMotor.getPower());
@@ -67,7 +67,7 @@ public class AndrewLinSlide {
             case TOLOW:
                 dump.recover();
                 if(LinSlideMotor.getCurrentPosition()>low){
-                    LinSlideMotor.setPower(-0.9);
+                    LinSlideMotor.setVelocity(-600);
                 } else{
                     LinSlideMotor.setPower(0);
                     state=states.LOW;
