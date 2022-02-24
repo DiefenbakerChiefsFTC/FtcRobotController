@@ -65,13 +65,13 @@ public class AndrewLinSlide {
 
 
             case TOLOW:
-                dump.recover();
                 if(LinSlideMotor.getCurrentPosition()>low){
                     LinSlideMotor.setVelocity(-600);
                 } else{
                     LinSlideMotor.setPower(0);
                     state=states.LOW;
                 }
+                dump.recover();
                 return;
 
             default:
