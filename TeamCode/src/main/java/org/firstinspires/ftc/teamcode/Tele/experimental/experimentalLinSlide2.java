@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.Tele.tested.initialize;
 import org.firstinspires.ftc.teamcode.Tele.untested.AndrewLinSlide;
+import org.firstinspires.ftc.teamcode.Tele.untested.intake;
 
 
 public class experimentalLinSlide2 extends LinearOpMode {
@@ -12,13 +13,16 @@ public class experimentalLinSlide2 extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException{
         initializer = new initialize(hardwareMap);
-        initializer.initFunctions();
+        initializer.initLS();
+        initializer.initDump();
+        initializer.initIntake();
 
         waitForStart();
         //comments
 
         while(opModeIsActive()){
             AndrewLinSlide.controllerInput(gamepad1);
+            intake.controllerInput(gamepad1);
 
             telemetry.addData("linslide State: ",AndrewLinSlide.state.toString());
             telemetry.addData("linslide encoder: ",AndrewLinSlide.LinSlideMotor.getCurrentPosition());
