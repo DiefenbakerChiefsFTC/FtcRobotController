@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.Tele.tested;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
@@ -19,7 +20,7 @@ public class initialize {
     DcMotor motorBackLeft = null;
     DcMotor motorBackRight = null;
     DcMotor carouMotor = null;
-    DcMotor LinSlideMotor = null;
+    DcMotorEx LinSlideMotor = null;
     Servo dumpServo = null;
     CRServo intakeServo = null;
     HardwareMap hardwareMap= null;
@@ -36,7 +37,7 @@ public class initialize {
         drivechain.setDTMotors(motorFrontLeft,motorFrontRight,motorBackLeft,motorBackRight);
     }
     public void initLS(){
-        LinSlideMotor = hardwareMap.dcMotor.get("LinSlideMotor");
+        LinSlideMotor = (DcMotorEx) hardwareMap.dcMotor.get("LinSlideMotor");
         AndrewLinSlide.setLSMotor(LinSlideMotor);
     }
     public void initCarou(){

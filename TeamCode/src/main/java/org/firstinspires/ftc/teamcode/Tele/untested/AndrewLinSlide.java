@@ -4,6 +4,7 @@ import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.gam
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.Gamepad;
 
 public class AndrewLinSlide {
@@ -14,12 +15,12 @@ public class AndrewLinSlide {
     public enum states{LOW, HIGH, TOLOW,TOHIGH,WAIT4DUMP} //states the slide can be in
     public static states state = states.LOW;
 
-    public static DcMotor LinSlideMotor = null; //declares motor
+    public static DcMotorEx LinSlideMotor = null; //declares motor
 
-    public static void setLSMotor(DcMotor LSMotor){
+    public static void setLSMotor(DcMotorEx LSMotor){
         LinSlideMotor = LSMotor;
         LinSlideMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        LinSlideMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        //LinSlideMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         LinSlideMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
     }
 
@@ -28,6 +29,7 @@ public class AndrewLinSlide {
     }
 
     public static void moveLS(boolean nextState){
+        //System.out.println(LinSlideMotor.getPower());
         switch (state){
             case LOW:
                 LinSlideMotor.setPower(0);
@@ -41,6 +43,7 @@ public class AndrewLinSlide {
                     LinSlideMotor.setPower(0.9);
                 }else{
                     LinSlideMotor.setPower(0);
+                    System.out.println(LinSlideMotor.getPower());
                     state=states.HIGH;
                 }
                 break;
