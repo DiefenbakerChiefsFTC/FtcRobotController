@@ -1,8 +1,11 @@
-package org.firstinspires.ftc.teamcode.Tele.experimental;
+package org.firstinspires.ftc.teamcode.Tele.experimental.LinearSlideTesting;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Gamepad;
+
+import org.firstinspires.ftc.teamcode.Tele.untested.TimeFactor;
 import org.firstinspires.ftc.teamcode.Tele.untested.linSlide;
 
 
@@ -21,7 +24,8 @@ public class experimentalLinSlide extends LinearOpMode {
 
         while (opModeIsActive()) {
 
-            linSlide.mainLSMethod(gamepad1.left_trigger>0.9, System.currentTimeMillis(), LinSlideMotor);
+            //linSlide.mainLSMethod(gamepad1.left_trigger>0.9, System.currentTimeMillis(), LinSlideMotor);
+            TimeFactor.PressedLTrig(gamepad1,LinSlideMotor);
 
         }
 
