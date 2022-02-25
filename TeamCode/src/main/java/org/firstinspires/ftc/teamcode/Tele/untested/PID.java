@@ -4,10 +4,13 @@ public class PID {
     private double kP;
     private double kD;
     private double kI;
+    final double ticksPerRot = 577.7;
 
-    private double prevPos;
+    private double currentPos;
 
     private double desiredPos;
+    private double prevError;
+    private double errorSum;
 
     public void setGoal(double desired){
         desiredPos=desired;
@@ -19,14 +22,17 @@ public class PID {
         kI=KI;
     }
 
-    public void update(double currentPos){
-        prevPos = currentPos;
+    public void update(double currentPosit){
+        currentPos = currentPosit;
     }
 
     public double power(){
-        double error = desiredPos-prevPos;
-        kP
-        return
+        double error = desiredPos-currentPos;
+        double p =  kP*error;
+        double d = kD*(error-prevError);
+        double i = kI*errorSum;
+        double result = p+d+i;
+        return result;
     }
 
 }
