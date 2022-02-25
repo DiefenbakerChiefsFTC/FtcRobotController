@@ -9,7 +9,7 @@ import org.firstinspires.ftc.teamcode.Tele.untested.AndrewLinSlide;
 import org.firstinspires.ftc.teamcode.Tele.untested.dump;
 import org.firstinspires.ftc.teamcode.Tele.untested.intake;
 
-@TeleOp
+@TeleOp(name = "LinearSlide+servos")
 public class experimentalLinSlide2 extends LinearOpMode {
     initialize initializer = null;
 
@@ -29,7 +29,7 @@ public class experimentalLinSlide2 extends LinearOpMode {
 
             telemetry.addData("linslide State: ",AndrewLinSlide.state.toString());
             telemetry.addData("linslide encoder: ",AndrewLinSlide.LinSlideMotor.getCurrentPosition());
-            telemetry.addData("linslide power: ",initializer.LinSlideMotor.getPower());
+            telemetry.addData("linslide power: ",AndrewLinSlide.LinSlideMotor.getPower());
             telemetry.update();
 
         }
