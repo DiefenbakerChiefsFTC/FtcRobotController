@@ -20,7 +20,7 @@ public class initialize {
     private DcMotor motorBackLeft = null;
     private DcMotor motorBackRight = null;
     private DcMotor carouMotor = null;
-    public DcMotorEx LinSlideMotor = null;
+    private DcMotorEx LinSlideMotor = null;
     Servo dumpServo = null;
     CRServo intakeServo = null;
     HardwareMap hardwareMap= null;
