@@ -3,48 +3,65 @@ package org.firstinspires.ftc.teamcode.Tele.tested;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.teamcode.Tele.untested.Carousel;
 import org.firstinspires.ftc.teamcode.Tele.untested.drivechain;
 import org.firstinspires.ftc.teamcode.Tele.untested.dump;
 import org.firstinspires.ftc.teamcode.Tele.untested.intake;
-import org.firstinspires.ftc.teamcode.Tele.untested.LinearSlide.linSlide;
+import org.firstinspires.ftc.teamcode.Tele.untested.AndrewLinSlide;
 
-public class initialize extends LinearOpMode {
+public class initialize {
 
-    DcMotor motorFrontLeft= null;
-    DcMotor motorFrontRight = null;
-    DcMotor motorBackLeft = null;
-    DcMotor motorBackRight = null;
-    DcMotor carouMotor = null;
-    DcMotor LinSlideMotor = null;
+    private DcMotor motorFrontLeft= null;
+    private DcMotor motorFrontRight = null;
+    private DcMotor motorBackLeft = null;
+    private DcMotor motorBackRight = null;
+    private DcMotor carouMotor = null;
+    private DcMotorEx LinSlideMotor = null;
+    Servo initialServo =null;
     Servo dumpServo = null;
     CRServo intakeServo = null;
+    HardwareMap hardwareMap= null;
 
 
-    public void setHardware(){
-        motorFrontLeft = hardwareMap.dcMotor.get("motorFrontLeft");   //driving
+    public initialize(HardwareMap HRDWRMAP){
+        hardwareMap = HRDWRMAP;
+    }
+    public void initDT(){
+        motorFrontLeft = hardwareMap.dcMotor.get("motorFrontLeft");
         motorFrontRight = hardwareMap.dcMotor.get("motorFrontRight");
         motorBackLeft = hardwareMap.dcMotor.get("motorBackLeft");
         motorBackRight = hardwareMap.dcMotor.get("motorBackRight");
-        carouMotor = hardwareMap.dcMotor.get("carouMotor");           //carousel
-        LinSlideMotor = hardwareMap.dcMotor.get("LinSlideMotor");     //linear slide
-        dumpServo = hardwareMap.servo.get("dumpServo");               //dump servo
-        intakeServo = hardwareMap.crservo.get("intakeServo");         //intake servo
-
+        drivechain.setDTMotors(motorFrontLeft,motorFrontRight,motorBackLeft,motorBackRight);
     }
+    public void initLS(){
+        LinSlideMotor = (DcMotorEx) hardwareMap.dcMotor.get("LinSlideMotor");
+        AndrewLinSlide.setLSMotor(LinSlideMotor);
+    }
+    public void initCarou(){
+        carouMotor = hardwareMap.dcMotor.get("carouMotor");
+        Carousel.setCSMotor(carouMotor);
+    }
+    public void initIntake(){
+        initialServo = hardwareMap.servo.get("initialServo");
+        intakeServo = hardwareMap.crservo.get("intakeServo");
+        intake.setIntakeServo(intakeServo,initialServo);
+    }
+    public void initDump() {
+        dumpServo = hardwareMap.servo.get("dumpServo");
+        dump.setDumpServo(dumpServo);
+    }
+
 
     public void initFunctions(){
         drivechain.setDTMotors(motorFrontLeft,motorFrontRight,motorBackLeft,motorBackRight);
-        linSlide.mainLSMethod(gamepad1.left_trigger>0.9, 0, LinSlideMotor);
         Carousel.setCSMotor(carouMotor);
         dump.setDumpServo(dumpServo);
-        intake.setIntakeServo(intakeServo);
+        intake.setIntakeServo(intakeServo,initialServo);
     }
 
-    @Override
-    public void runOpMode() throws InterruptedException {
 
-    }
 }
