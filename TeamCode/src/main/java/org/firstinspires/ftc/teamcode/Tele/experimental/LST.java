@@ -3,16 +3,15 @@ package org.firstinspires.ftc.teamcode.Tele.experimental;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.Gamepad;
 
 import org.firstinspires.ftc.teamcode.Tele.untested.linSlide;
 
 
-@TeleOp(name="LinSlideTest", group="experimental")
-public class experimentalLinSlide extends LinearOpMode {
+@TeleOp(name="encoderTest", group="experimental")
+public class LST extends LinearOpMode {
 
     public DcMotor LinSlideMotor;
-
+    double CurrentPosition;
     public void runOpMode() throws InterruptedException {
 
         LinSlideMotor = hardwareMap.dcMotor.get("LinSlideMotor");
@@ -25,12 +24,12 @@ public class experimentalLinSlide extends LinearOpMode {
 
         while (opModeIsActive()) {
 
-            linSlide.mainLSMethod(gamepad1, LinSlideMotor);
+            LinSlideMotor.setTargetPosition(100);
+            CurrentPosition = LinSlideMotor.getCurrentPosition();
+            System.out.println(CurrentPosition);
 
         }
-
     }
-
 }
 
 

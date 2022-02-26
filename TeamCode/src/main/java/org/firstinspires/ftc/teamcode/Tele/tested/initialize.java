@@ -9,7 +9,7 @@ import org.firstinspires.ftc.teamcode.Tele.untested.Carousel;
 import org.firstinspires.ftc.teamcode.Tele.untested.drivechain;
 import org.firstinspires.ftc.teamcode.Tele.untested.dump;
 import org.firstinspires.ftc.teamcode.Tele.untested.intake;
-import org.firstinspires.ftc.teamcode.Tele.untested.linSlide;
+import org.firstinspires.ftc.teamcode.Tele.untested.LinearSlide.linSlide;
 
 public class initialize extends LinearOpMode {
 
@@ -30,8 +30,6 @@ public class initialize extends LinearOpMode {
         motorBackRight = hardwareMap.dcMotor.get("motorBackRight");
         carouMotor = hardwareMap.dcMotor.get("carouMotor");           //carousel
         LinSlideMotor = hardwareMap.dcMotor.get("LinSlideMotor");     //linear slide
-        LinSlideMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        LinSlideMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         dumpServo = hardwareMap.servo.get("dumpServo");               //dump servo
         intakeServo = hardwareMap.crservo.get("intakeServo");         //intake servo
 
@@ -39,7 +37,7 @@ public class initialize extends LinearOpMode {
 
     public void initFunctions(){
         drivechain.setDTMotors(motorFrontLeft,motorFrontRight,motorBackLeft,motorBackRight);
-        linSlide.mainLSMethod(gamepad1, LinSlideMotor);
+        linSlide.mainLSMethod(gamepad1.left_trigger>0.9, 0, LinSlideMotor);
         Carousel.setCSMotor(carouMotor);
         dump.setDumpServo(dumpServo);
         intake.setIntakeServo(intakeServo);

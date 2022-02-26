@@ -20,7 +20,7 @@ public class TimeFactor {
                         //LSM.setTargetPosition(high);
                     LSM.setPower(0.8);
                     try{
-                        Thread.sleep(2500);
+                        Thread.sleep(1000);
                         LSM.setPower(0);
                         state = states.HIGH;
                     }catch(InterruptedException e){
@@ -31,9 +31,9 @@ public class TimeFactor {
                 case HIGH:
                     //if(state == states.HIGH){
                         //LSM.setTargetPosition(low);
-                    LSM.setPower(0.8);
+                    LSM.setPower(-0.8);
                     try{
-                        Thread.sleep(2500);
+                        Thread.sleep(1000);
                         LSM.setPower(0);
                         state = states.LOW;
                     }catch(InterruptedException e){
