@@ -9,17 +9,22 @@ public class intake {
     static CRServo intakeServo;
     static ServoController sCont= null;
     static Servo initialServo;
+    static ServoController ServoController1;
 
     //kinda like the dump servo code, but can be controlled with gamepad
 
     public static void setIntakeServo(CRServo INTK, Servo IS){
         initialServo = IS;
+        ServoController1 = initialServo.getController();
+        ServoController1.pwmEnable();
         intakeServo = INTK;
         sCont = intakeServo.getController();
         sCont.pwmEnable();
-        initialServo.setPosition(0.4);
-    }
 
+    }
+    public static void moveInitialServo(){
+        initialServo.setPosition(1);
+    }
     public static void controllerInput(Gamepad gamepad1){
         if(gamepad1.b){
             rotate(0.7);
@@ -29,6 +34,7 @@ public class intake {
     }
 
     public static void rotate(double power){
+
         intakeServo.setPower(power);
     }
 
