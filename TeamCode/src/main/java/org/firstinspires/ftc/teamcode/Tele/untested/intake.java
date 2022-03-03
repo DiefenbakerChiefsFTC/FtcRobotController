@@ -20,6 +20,7 @@ public class intake {
         intakeServo = INTK;
         sCont = intakeServo.getController();
         sCont.pwmEnable();
+        initialServo.setPosition(0.5);//starting position
 
     }
     public static void moveInitialServo(){
