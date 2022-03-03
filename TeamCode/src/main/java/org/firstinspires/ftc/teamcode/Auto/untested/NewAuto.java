@@ -43,6 +43,13 @@ public class NewAuto extends LinearOpMode {
         }
         drivechain.drive(0,0,0);
     }
+    public void move(double seconds, double forwardPWR, double sidewaysPWR,double turnPWR){
+        startTime = time.time();
+        while(time.time()-seconds<seconds){
+            drivechain.drive(forwardPWR,sidewaysPWR,turnPWR);
+        }
+        drivechain.drive(0,0,0);
+    }
 
 }
 
