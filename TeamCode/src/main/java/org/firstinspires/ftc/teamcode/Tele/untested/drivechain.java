@@ -24,7 +24,8 @@ public class drivechain {
         drive(gamepad1.left_stick_x, gamepad1.left_stick_y, gamepad1.right_stick_x);
     }
 
-    public static void drive(double x, double y, double rx){
+    public static void drive(double y, double x, double turning){
+        double rx = turning;
         x = x * 1.1;
 
         double denominator = Math.max(Math.abs(y) + Math.abs(x) + Math.abs(rx), 1);
@@ -33,7 +34,10 @@ public class drivechain {
         double frontRightPower = (y - x - rx) / denominator;
         double backRightPower = (y + x - rx) / denominator;
 
-
+        motorFrontLeft.setPower(frontLeftPower);
+        motorBackLeft.setPower(backLeftPower);
+        motorFrontRight.setPower(frontRightPower);
+        motorBackRight.setPower(backRightPower);
 
     }
 
