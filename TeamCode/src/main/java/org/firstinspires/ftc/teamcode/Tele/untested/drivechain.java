@@ -21,10 +21,19 @@ public class drivechain {
     }
 
     public static void controllerInput(Gamepad gamepad1){
-        drive(gamepad1.left_stick_x, gamepad1.left_stick_y);
+        drive(gamepad1.left_stick_x, gamepad1.left_stick_y, gamepad1.right_stick_x);
     }
 
-    public static void drive(double joystickX, double joystickY){
+    public static void drive(double x, double y, double rx){
+        x = x * 1.1;
+
+        double denominator = Math.max(Math.abs(y) + Math.abs(x) + Math.abs(rx), 1);
+        double frontLeftPower = (y + x + rx) / denominator;
+        double backLeftPower = (y - x + rx) / denominator;
+        double frontRightPower = (y - x - rx) / denominator;
+        double backRightPower = (y + x - rx) / denominator;
+
+
 
     }
 
