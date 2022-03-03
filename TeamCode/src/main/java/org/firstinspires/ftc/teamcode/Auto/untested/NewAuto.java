@@ -1,12 +1,15 @@
 package org.firstinspires.ftc.teamcode.Auto.untested;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.Tele.tested.initialize;
+import org.firstinspires.ftc.teamcode.Tele.untested.Carousel;
 import org.firstinspires.ftc.teamcode.Tele.untested.drivechain;
 import org.firstinspires.ftc.teamcode.Tele.untested.intake;
 
+@Autonomous
 public class NewAuto extends LinearOpMode {
     initialize initializer = null;
     private ElapsedTime time;
@@ -23,8 +26,16 @@ public class NewAuto extends LinearOpMode {
         time = new ElapsedTime();
 
         waitForStart();
-        intake.moveInitialServo();
 
+        intake.moveInitialServo();
+        turn90left();
+        turn90left();//turn around,
+        move(2,0,0.5,0);//move right
+        Carousel.spin(0.8);//turn the carousel
+        timer(3);//do it for 3 seconds
+        Carousel.spin(0);//stop
+        turn90left();//turn left to face warehouse
+        move(3,0.6,0,0);//take 3 seconds to enter the warehouse
 
     }
 
@@ -49,6 +60,13 @@ public class NewAuto extends LinearOpMode {
             drivechain.drive(forwardPWR,sidewaysPWR,turnPWR);
         }
         drivechain.drive(0,0,0);
+    }
+    public void timer(double seconds){
+        startTime=time.time();
+        while(time.time()-startTime<seconds){
+            System.out.println("waiting");
+        }
+        return;
     }
 
 }
