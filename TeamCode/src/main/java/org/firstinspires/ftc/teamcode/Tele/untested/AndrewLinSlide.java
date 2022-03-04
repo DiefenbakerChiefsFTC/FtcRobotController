@@ -4,46 +4,52 @@ import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.gam
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.Gamepad;
 
 public class AndrewLinSlide {
 
-    static final int low = 0; //encoder values
-    static final int high = 2100;
+    static final int low = 0; //rotations
+    static final int high = 4;
 
     public enum states{LOW, HIGH, TOLOW,TOHIGH,WAIT4DUMP} //states the slide can be in
     public static states state = states.LOW;
+    private static PID LSPID;
 
-    static DcMotor LinSlideMotor = null; //declares motor
 
-    public static void setLSMotor(DcMotor LSMotor){
+    public static DcMotorEx LinSlideMotor; //declares motor
+
+    public static void setLSMotor(DcMotorEx LSMotor){
         LinSlideMotor = LSMotor;
         LinSlideMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        LinSlideMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        LSMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        LinSlideMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        LinSlideMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        state=states.LOW;
+        LSPID = new PID(2,0.1,0.07);
     }
 
     public static void controllerInput(Gamepad gamepad1){
-        moveLS(gamepad1.right_trigger == 1);
+        moveLS(gamepad1.right_trigger >= 0.8);
     }
 
     public static void moveLS(boolean nextState){
+        //System.out.println(LinSlideMotor.getPower());
         switch (state){
             case LOW:
                 LinSlideMotor.setPower(0);
-                if(nextState && LinSlideMotor.getCurrentPosition() < high){
+                if(nextState){
                     state = states.TOHIGH;
+                    LSPID.setGoal(high);
                 }
-                break;
+                return;
 
             case TOHIGH:
-                if(LinSlideMotor.getCurrentPosition()<high){
-                    LinSlideMotor.setPower(0.9);
-                }else{
+                LinSlideMotor.setPower(LSPID.power(LinSlideMotor.getCurrentPosition()));
+                if(Math.abs(LSPID.checkDist())<5){
                     LinSlideMotor.setPower(0);
                     state=states.HIGH;
                 }
-                break;
+                return;
 
             case HIGH:
                 LinSlideMotor.setPower(0);
@@ -51,30 +57,29 @@ public class AndrewLinSlide {
                     dump.dumpFreight();
                     state = states.WAIT4DUMP;
                 }
-                break;
+                return;
 
             case WAIT4DUMP:
                 dump.update();
                 if(!dump.dumping){
                     state=states.TOLOW;
+                    LSPID.setGoal(low);
                 }
-                break;
+                return;
 
 
             case TOLOW:
-                dump.recover();
-                if(LinSlideMotor.getCurrentPosition()>low){
-                    LinSlideMotor.setPower(-0.9);
-                } else{
+                LinSlideMotor.setPower(LSPID.power(LinSlideMotor.getCurrentPosition()));
+                if(Math.abs(LSPID.checkDist())<5){
                     LinSlideMotor.setPower(0);
                     state=states.LOW;
                 }
-                break;
+                dump.recover();
+                return;
 
-            default:
-                break;
         }
     }
+
 
 }
 //end

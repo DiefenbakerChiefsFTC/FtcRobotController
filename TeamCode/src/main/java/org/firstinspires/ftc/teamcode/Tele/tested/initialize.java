@@ -21,7 +21,6 @@ public class initialize {
     private DcMotor motorBackRight = null;
     private DcMotor carouMotor = null;
     private DcMotorEx LinSlideMotor = null;
-    Servo initialServo =null;
     Servo dumpServo = null;
     CRServo intakeServo = null;
     HardwareMap hardwareMap= null;
@@ -46,11 +45,10 @@ public class initialize {
         Carousel.setCSMotor(carouMotor);
     }
     public void initIntake(){
-        initialServo = hardwareMap.servo.get("initialServo");
         intakeServo = hardwareMap.crservo.get("intakeServo");
-        intake.setIntakeServo(intakeServo,initialServo);
+        intake.setIntakeServo(intakeServo);
     }
-    public void initDump() {
+    public void initDump(){
         dumpServo = hardwareMap.servo.get("dumpServo");
         dump.setDumpServo(dumpServo);
     }
@@ -60,7 +58,7 @@ public class initialize {
         drivechain.setDTMotors(motorFrontLeft,motorFrontRight,motorBackLeft,motorBackRight);
         Carousel.setCSMotor(carouMotor);
         dump.setDumpServo(dumpServo);
-        intake.setIntakeServo(intakeServo,initialServo);
+        intake.setIntakeServo(intakeServo);
     }
 
 

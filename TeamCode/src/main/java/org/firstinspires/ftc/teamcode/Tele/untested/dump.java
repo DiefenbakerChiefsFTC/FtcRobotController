@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.Tele.untested;
 
+import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.ServoController;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -21,6 +22,14 @@ public class dump {
         sCont = dumpServo.getController();
         sCont.pwmEnable();//enables PWM. It's supposed to be on by default, but I'm just gonna turn it on again just in case.
         runTime = new ElapsedTime();
+    }
+
+    public static void controllerInput(Gamepad gamepad1){
+        if(gamepad1.y){
+        dumpFreight();}
+        if(gamepad1.a) {
+            recover();
+        }
     }
 
     //just add this function to state high in the linear slide, or whatever state it will be when the servo should be activated
