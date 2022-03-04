@@ -20,8 +20,26 @@ public class drivechain {
         motorBackRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
 
+
     public static void controllerInput(Gamepad gamepad1){
-        drive(gamepad1.left_stick_x, gamepad1.left_stick_y, gamepad1.right_stick_x);
+        double x = gamepad1.left_stick_x;
+        double y = gamepad1.left_stick_y;
+        double rX = gamepad1.right_stick_x;
+        double rY = gamepad1.right_stick_y;
+
+        double absoluteDist= Math.sqrt(x*x + y*y );
+        double absoluteDistR = Math.sqrt(rX*rX + rY* rY );
+
+
+        if(absoluteDist<0.2){
+            x = 0;
+            y=0;
+        }
+        if(absoluteDistR<0.2){
+            rX=0;
+            rY=0;
+        }
+        drive(x, y, rX);
     }
 
     public static void drive(double y, double x, double turning){

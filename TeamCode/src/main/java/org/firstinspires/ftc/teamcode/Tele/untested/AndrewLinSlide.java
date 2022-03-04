@@ -5,6 +5,7 @@ import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.gam
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Gamepad;
 
 public class AndrewLinSlide {
@@ -24,6 +25,7 @@ public class AndrewLinSlide {
         LinSlideMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         LinSlideMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         LinSlideMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        LinSlideMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         state=states.LOW;
         LSPID = new PID(2,0.1,0.07);
     }
