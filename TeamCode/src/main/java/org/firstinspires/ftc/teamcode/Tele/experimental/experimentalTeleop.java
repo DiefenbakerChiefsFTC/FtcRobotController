@@ -23,7 +23,6 @@ public class experimentalTeleop  extends LinearOpMode {
         initializer.initCarou();
 
         waitForStart();
-        intake.moveInitialServo();
 
         while(opModeIsActive()){
             drivechain.controllerInput(gamepad1);

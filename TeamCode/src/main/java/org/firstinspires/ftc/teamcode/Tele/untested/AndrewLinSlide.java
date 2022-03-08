@@ -10,8 +10,8 @@ import com.qualcomm.robotcore.hardware.Gamepad;
 
 public class AndrewLinSlide {
 
-    static final int low = 0; //rotations
-    static final int high = 4;
+    static final double low = 0; //rotations
+    static final double high = 4.1;
 
     public enum states{LOW, HIGH, TOLOW,TOHIGH,WAIT4DUMP} //states the slide can be in
     public static states state = states.LOW;
@@ -27,7 +27,7 @@ public class AndrewLinSlide {
         LinSlideMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         LinSlideMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         state=states.LOW;
-        LSPID = new PID(2,0.1,0.07);
+        LSPID = new PID(2.4,0.1,0.07);
     }
 
     public static void controllerInput(Gamepad gamepad1){

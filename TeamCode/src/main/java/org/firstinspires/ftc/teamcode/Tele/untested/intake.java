@@ -23,9 +23,7 @@ public class intake {
         initialServo.setPosition(0.5);//starting position
 
     }
-    public static void moveInitialServo(){
-        initialServo.setPosition(1);
-    }
+
     public static void controllerInput(Gamepad gamepad1){
         if(gamepad1.b){
             rotate(0.7);
