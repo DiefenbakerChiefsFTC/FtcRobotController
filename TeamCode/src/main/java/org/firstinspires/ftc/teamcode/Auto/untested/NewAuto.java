@@ -27,7 +27,7 @@ public class NewAuto extends LinearOpMode {
 
         waitForStart();
 
-        intake.moveInitialServo();
+
         turn90left();
         turn90left();//turn around,
         move(2,0,0.5,0);//move right

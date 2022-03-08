@@ -16,7 +16,7 @@ public class ServoTeleOp extends LinearOpMode {
         initializer = new initialize(hardwareMap);
         initializer.initIntake();
         waitForStart();
-        intake.moveInitialServo();
+
         try {
             TimeUnit.SECONDS.sleep(2);
         }
