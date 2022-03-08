@@ -34,7 +34,7 @@ public class competition_initialize {
         motorFrontRight = hardwareMap.dcMotor.get("motorFrontRight");
         motorBackLeft = hardwareMap.dcMotor.get("motorBackLeft");
         motorBackRight = hardwareMap.dcMotor.get("motorBackRight");
-        drivechain.setDTMotors(motorFrontLeft,motorFrontRight,motorBackLeft,motorBackRight);
+        competition_drivechain.setDTMotors(motorFrontLeft,motorFrontRight,motorBackLeft,motorBackRight);
     }
     public void initLS(){
         LinSlideMotor = (DcMotorEx) hardwareMap.dcMotor.get("LinSlideMotor");
