@@ -39,10 +39,10 @@ public class GM0_MecanumTeleOp extends LinearOpMode {
             double frontRightPower = (y - x - rx) / denominator;
             double backRightPower = (y + x - rx) / denominator;
 
-            motorFrontLeft.setPower(frontLeftPower);
-            motorBackLeft.setPower(backLeftPower);
-            motorFrontRight.setPower(frontRightPower);
-            motorBackRight.setPower(backRightPower);
+            motorFrontLeft.setPower(-frontLeftPower);
+            motorBackLeft.setPower(-backLeftPower);
+            motorFrontRight.setPower(-frontRightPower);
+            motorBackRight.setPower(-backRightPower);
         }
     }
 }
