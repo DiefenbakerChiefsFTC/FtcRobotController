@@ -19,6 +19,7 @@ public class ExCompTele extends LinearOpMode {
         DcMotor motorBackLeft = hardwareMap.dcMotor.get("motorBackLeft");
         DcMotor motorFrontRight = hardwareMap.dcMotor.get("motorFrontRight");
         DcMotor motorBackRight = hardwareMap.dcMotor.get("motorBackRight");
+        Servo Clawservo = hardwareMap.servo.get("clawServo");
 
         // Reverse the right side motors
         // Reverse left motors if you are using NeveRests
@@ -29,6 +30,11 @@ public class ExCompTele extends LinearOpMode {
         while (opModeIsActive()){
             TwoStageLinSlideFile.setLSMotor(rightLinSlide/*, leftLinSlide*/); //defines motors in terms of the seperate file
             TwoStageLinSlideFile.linSlideDouble(gamepad1); //takes gamepad input
+            
+            ServoTele.setServos(ClawServo);
+            ServoTele.release(gamepad1.x);
+            ServoTele.close(gamepad1.y);
+                        
             double y = -gamepad1.left_stick_y; // Remember, this is reversed!
             double x = gamepad1.left_stick_x * 1.1; // Counteract imperfect strafing
             double rx = gamepad1.right_stick_x;
@@ -47,11 +53,6 @@ public class ExCompTele extends LinearOpMode {
             motorFrontRight.setPower(-frontRightPower);
             motorBackRight.setPower(-backRightPower);
             
-            TwoStageLinSlideFile.setLSMotor(rightLinSlide/*, leftLinSlide*/); //defines motors in terms of the seperate file
-            TwoStageLinSlideFile.linSlideDouble(gamepad1); //takes gamepad input
-            ServoTele.setServos(ClawServo);
-            ServoTele.release(gamepad1.x);
-            ServoTele.close(gamepad1.y);
         }
     }
 }
