@@ -5,6 +5,10 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
+import org.firstinspires.ftc.teamcode.Tele.tested.initialize2023;
+import org.firstinspires.ftc.teamcode.Tele.untested.ServoTele;
+import org.firstinspires.ftc.teamcode.Tele.untested.TwoStageLinSlideFile;
+
 @TeleOp
 public class ExCompTele extends LinearOpMode {
     @Override
@@ -42,6 +46,12 @@ public class ExCompTele extends LinearOpMode {
             motorBackLeft.setPower(-backLeftPower);
             motorFrontRight.setPower(-frontRightPower);
             motorBackRight.setPower(-backRightPower);
+            
+            TwoStageLinSlideFile.setLSMotor(rightLinSlide/*, leftLinSlide*/); //defines motors in terms of the seperate file
+            TwoStageLinSlideFile.linSlideDouble(gamepad1); //takes gamepad input
+            ServoTele.setServos(ClawServo);
+            ServoTele.release(gamepad1.x);
+            ServoTele.close(gamepad1.y);
         }
     }
 }
